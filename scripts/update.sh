@@ -15,10 +15,14 @@ ver=$(find venv -name '_constants.py' | grep blob | xargs grep 'X_MS_VERSION')
 ver=${ver#X_MS_VERSION = \'}
 ver=${ver%\'}
 ver=${ver//-/_}
-
+echo $ver
 src_root=$(cd venv/lib/$(ls venv/lib); pwd)/site-packages/azure/storage
-tgt=../azure/multiapi/storage/v$ver
+tgt=./azure/multiapi/storage/v$ver
 mkdir -p $tgt
+
+pwd
+echo workdir $workdir
+echo target $tgt
 
 for service in blob file queue common; do
     src=$src_root/$service
