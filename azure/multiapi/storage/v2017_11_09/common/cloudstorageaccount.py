@@ -57,7 +57,7 @@ class CloudStorageAccount(object):
         :rtype: :class:`~azure.storage.blob.blockblobservice.BlockBlobService`
         '''
         try:
-            from .blob.blockblobservice import BlockBlobService
+            from ..blob.blockblobservice import BlockBlobService
             return BlockBlobService(self.account_name, self.account_key,
                                     sas_token=self.sas_token,
                                     is_emulated=self.is_emulated)
@@ -74,7 +74,7 @@ class CloudStorageAccount(object):
         :rtype: :class:`~azure.storage.blob.pageblobservice.PageBlobService`
         '''
         try:
-            from .blob.pageblobservice import PageBlobService
+            from ..blob.pageblobservice import PageBlobService
             return PageBlobService(self.account_name, self.account_key,
                                    sas_token=self.sas_token,
                                    is_emulated=self.is_emulated)
@@ -91,7 +91,7 @@ class CloudStorageAccount(object):
         :rtype: :class:`~azure.storage.blob.appendblobservice.AppendBlobService`
         '''
         try:
-            from .blob.appendblobservice import AppendBlobService
+            from ..blob.appendblobservice import AppendBlobService
             return AppendBlobService(self.account_name, self.account_key,
                                      sas_token=self.sas_token,
                                      is_emulated=self.is_emulated)
@@ -108,7 +108,7 @@ class CloudStorageAccount(object):
         :rtype: :class:`~azure.storage.queue.queueservice.QueueService`
         '''
         try:
-            from .queue.queueservice import QueueService
+            from ..queue.queueservice import QueueService
             return QueueService(self.account_name, self.account_key,
                                 sas_token=self.sas_token,
                                 is_emulated=self.is_emulated)
@@ -125,7 +125,7 @@ class CloudStorageAccount(object):
         :rtype: :class:`~azure.storage.file.fileservice.FileService`
         '''
         try:
-            from .file.fileservice import FileService
+            from ..file.fileservice import FileService
             return FileService(self.account_name, self.account_key,
                                sas_token=self.sas_token)
         except ImportError:

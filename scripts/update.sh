@@ -35,7 +35,7 @@ for service in blob file queue common; do
         else
             # make relative reference to azure.storage.common
             sed -i 's/from azure.storage.common./from ./g' $f
-            sed -i 's/from azure.storage./from ./g' $f
+            sed -i 's/from azure.storage./from ../g' $f
         fi
     done
 done
