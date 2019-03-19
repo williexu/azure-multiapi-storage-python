@@ -8,7 +8,7 @@ cd $workdir
 if [ ! -d venv ]; then
     python -m virtualenv venv
     . venv/bin/activate
-    pip install azure-storage-blob azure-storage-file azure-storage-queue azure-storage-common
+    pip install azure-storage-blob==1.2.0rc1 azure-storage-file==1.2.0rc1 azure-storage-queue==1.2.0rc1 azure-storage-common==1.2.0rc1
 fi
 
 ver=$(find venv -name '_constants.py' | grep blob | xargs grep 'X_MS_VERSION')
@@ -17,12 +17,13 @@ ver=${ver%\'}
 ver=${ver//-/_}
 
 src_root=$(cd venv/lib/$(ls venv/lib); pwd)/site-packages/azure/storage
-tgt=../azure/multiapi/storage/v$ver
+tgt=./azure/multiapi/storage/v$ver
 mkdir -p $tgt
 
 for service in blob file queue common; do
     src=$src_root/$service
     cp -R $src $tgt
+    continue
     for f in `find $tgt/$service -name '*.py'`; do
         echo Updating $f
         # remove BOM
