@@ -23,7 +23,7 @@ mkdir -p $tgt
 for service in blob file queue common; do
     src=$src_root/$service
     cp -R $src $tgt
-    continue
+
     for f in `find $tgt/$service -name '*.py'`; do
         echo Updating $f
         # remove BOM
